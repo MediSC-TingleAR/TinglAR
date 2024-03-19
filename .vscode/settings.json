@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "tinglAR_demoLow.sln"
+    "dotnet.defaultSolution": "TinglAR_demo.sln"
 }

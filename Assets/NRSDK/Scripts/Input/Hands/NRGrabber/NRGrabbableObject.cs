@@ -68,8 +68,9 @@ namespace NRKernal
         {
             if (IsBeingGrabbed || grabber == null)
                 return;
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            Grabber = grabber;
+            gameObject.SetActive(false);
+            // gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            // Grabber = grabber;
             if (m_OnGrabBegan != null)
             {
                 m_OnGrabBegan();

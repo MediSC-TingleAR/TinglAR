@@ -86,6 +86,7 @@ namespace NRKernal
             {
                 m_GrabReadyDict.Add(grabble, 1);
             }
+            gameObject.SetActive(false);
         }
 
         /// <summary> Executes the 'trigger exit' action. </summary>
