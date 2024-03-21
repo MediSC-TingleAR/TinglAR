@@ -83,7 +83,7 @@ PrefabInstance:
       addedObject: {fileID: 2086160428714505721}
     - targetCorrespondingSourceObject: {fileID: 5512221208420761697, guid: a00c82315be7443159c55c131e86e611, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2097180908976146753}
+      addedObject: {fileID: 1814988472722830814}
   m_SourcePrefab: {fileID: 100100000, guid: a00c82315be7443159c55c131e86e611, type: 3}
 --- !u!1 &5313121601179415854 stripped
 GameObject:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AttachedColliders:
   - {fileID: 3541486150325904657}
---- !u!114 &2097180908976146753
+--- !u!114 &1814988472722830814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,13 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5313121601179415854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3c4d866eb547d47a0736392b7104ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fdc23c3064979d4d826eedb676b976d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoints: []
-  SpawnObject: {fileID: 5313121601179415854}
-  xPos: 0
-  zPos: 0
-  score: 0
-  playingGame: 1
-  didInit: 0
+  scoreText: {fileID: 0}

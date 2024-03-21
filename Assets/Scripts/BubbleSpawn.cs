@@ -36,6 +36,7 @@ public class BubbleSpawn : MonoBehaviour
                 GameObject spawnedObject = Instantiate(SpawnObject, transform);
                 spawnedObject.transform.localPosition = spawnPosition;
                 spawnedObject.transform.localRotation = Quaternion.identity; // (복제할 대상, 위치, 방향)
+                spawnedObject.SetActive(true);
 
                 Debug.Log($"=========enemyCount: {bubbleCount}");
 
@@ -54,7 +55,7 @@ public class BubbleSpawn : MonoBehaviour
             score += 1;
             Debug.Log("CURRENT SCORE " + score);
 
-            yield return new WaitForSeconds(4); // 4초 기준으로 생성
+            yield return new WaitForSeconds(2); // 4초 기준으로 생성
 
             }
 

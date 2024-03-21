@@ -195,9 +195,9 @@ namespace NRKernal
         /// <param name="target"> Target for the.</param>
         private void GrabTarget(NRGrabbableObject target)
         {
-            if (target == null || !target.CanGrab)
+            if (target == null || !target.CanGrab) // target 이 없거나, 잡을 수 없으면 실행 X
                 return;
-            if (!m_GrabbingList.Contains(target))
+            if (!m_GrabbingList.Contains(target)) // target 이 grablist 에없으면 grablist 에 추가
             {
                 m_GrabbingList.Add(target);
             }
@@ -207,8 +207,8 @@ namespace NRKernal
                 var offsetRotation = Quaternion.Inverse(transform.rotation) * target.transform.rotation;
                 m_GrabStartOffsetDict.Add(target, new Pose(offsetPosition, offsetRotation));
             }
-            m_GrabReadyDict.Remove(target);
-            target.GrabBegin(this);
+            m_GrabReadyDict.Remove(target); // grab ready 상태에서 target 을 제거하고
+            target.GrabBegin(this); // grab을 시작한다.
         }
 
         /// <summary> Move grabbing objects. </summary>
