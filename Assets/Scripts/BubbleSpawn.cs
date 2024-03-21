@@ -38,22 +38,22 @@ public class BubbleSpawn : MonoBehaviour
                 spawnedObject.transform.localRotation = Quaternion.identity; // (복제할 대상, 위치, 방향)
                 spawnedObject.SetActive(true);
 
-                Debug.Log($"=========enemyCount: {bubbleCount}");
+                // Debug.Log($"=========enemyCount: {bubbleCount}");
 
-                // 위치 정보 로그 출력
-                Debug.Log($"=========Object spawned at position: {spawnPosition}");
+                // // 위치 정보 로그 출력
+                // Debug.Log($"=========Object spawned at position: {spawnPosition}");
 
                 // 메인 카메라의 위치 및 방향 정보 로그 출력
                 Camera mainCamera = Camera.main;
-                if (mainCamera != null)
-                {
-                    Debug.Log($"=========Main Camera position: {mainCamera.transform.position}");
-                    Debug.Log($"=========Main Camera forward direction: {mainCamera.transform.forward}");
-                }
+                // if (mainCamera != null)
+                // {
+                //     Debug.Log($"=========Main Camera position: {mainCamera.transform.position}");
+                //     Debug.Log($"=========Main Camera forward direction: {mainCamera.transform.forward}");
+                // }
 
             bubbleCount += 1;
             score += 1;
-            Debug.Log("CURRENT SCORE " + score);
+            // Debug.Log("CURRENT SCORE " + score);
 
             yield return new WaitForSeconds(2); // 4초 기준으로 생성
 

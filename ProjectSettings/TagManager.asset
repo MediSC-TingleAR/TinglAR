@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - scoretext
+  - Logo
+  - end
+  - endgame
   layers:
   - Default
   - TransparentFX
