@@ -6,9 +6,6 @@ public class BubbleSpawn : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject SpawnObject; //Prefab으로 생성될 오브젝트
-
-    public float xPos = 0f;
-    public float zPos = 0.2f;
     public static int bubbleCount;
     public int score=0;
 
@@ -64,8 +61,8 @@ public class BubbleSpawn : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float xPos = Random.Range(-0.2f, 0.2f); // Position X축 -2~ 4 사이의 랜덤 범위 생성
-        float zPos = Random.Range(0.2f, 0.6f); // Position Z축 3 ~ 5 사이의 랜덤 범위 생성
+        float xPos = Random.Range(-0.15f, 0.15f); // Position X축 -2~ 4 사이의 랜덤 범위 생성
+        float zPos = Random.Range(0.3f, 0.4f); // Position Z축 3 ~ 5 사이의 랜덤 범위 생성
 
         return new Vector3(xPos, 0, zPos);
     }
