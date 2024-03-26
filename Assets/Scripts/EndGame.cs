@@ -13,10 +13,10 @@ public class EndGame : MonoBehaviour
 
     public void Start()
     {
-        mainLogo = GameObject.FindGameObjectWithTag("Logo");
-        end = GameObject.FindGameObjectWithTag("end");
-        grabbable = GameObject.FindGameObjectWithTag("Finish");
-        GameObject scoreObject = GameObject.FindGameObjectWithTag("scoretext");
+        mainLogo = GameObject.FindGameObjectWithTag("Logo"); //mainUI
+        end = GameObject.FindGameObjectWithTag("end");  //endUI
+        grabbable = GameObject.FindGameObjectWithTag("bubbles"); // bubbles 오브젝트
+        GameObject scoreObject = GameObject.FindGameObjectWithTag("scoretext"); //스코어를 표시해주는 TEXT 오브젝트
 
         end.SetActive(false);
         if (scoreObject != null)

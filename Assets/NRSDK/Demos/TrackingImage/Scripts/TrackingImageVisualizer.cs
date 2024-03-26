@@ -7,18 +7,15 @@ public class TrackingImageVisualizer : MonoBehaviour
 {
     public NRTrackableImage image;
     public GameObject wand;
+    public GameObject notDetect;
 
     void Update()
     {
-        Debug.Log("HELLO");
-        if(image == null)
-        {
-            wand.SetActive(false);
-            return;
-        }
+        if(image!=null) {
         var center = image.GetCenterPose();
         transform.position = center.position;
         transform.rotation = center.rotation;
         wand.SetActive(true);
+        }
     }
 }

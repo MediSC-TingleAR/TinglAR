@@ -19,13 +19,13 @@ public class BubbleSpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bubbleCount < 5 && didInit)
+        if (bubbleCount < 20 && didInit)
             StartCoroutine(StartSpawing());
     }
 
     IEnumerator StartSpawing()
     {  
-            while (bubbleCount < 5) // 총 5개씩 생성
+            while (bubbleCount < 20) // 총 5개씩 생성
             {
                 Vector3 spawnPosition = GetRandomSpawnPosition();
 
@@ -61,10 +61,11 @@ public class BubbleSpawn : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float xPos = Random.Range(-0.15f, 0.15f); // Position X축 -2~ 4 사이의 랜덤 범위 생성
-        float zPos = Random.Range(0.3f, 0.4f); // Position Z축 3 ~ 5 사이의 랜덤 범위 생성
+        float xPos = Random.Range(-0.3f, 0.3f); // Position X축 -2~ 4 사이의 랜덤 범위 생성
+        float zPos = Random.Range(0.4f, 1.4f); // Position Z축 3 ~ 5 사이의 랜덤 범위 생성
+        float yPos = Random.Range(-0.2f, 0.2f);
 
-        return new Vector3(xPos, 0, zPos);
+        return new Vector3(xPos, yPos, zPos);
     }
 
 }
