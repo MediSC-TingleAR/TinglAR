@@ -1,9 +1,9 @@
 ﻿/****************************************************************************
-* Copyright 2019 Nreal Techonology Limited. All rights reserved.
+* Copyright 2019 Xreal Techonology Limited. All rights reserved.
 *                                                                                                                                                          
 * This file is part of NRSDK.                                                                                                          
 *                                                                                                                                                           
-* https://www.nreal.ai/        
+* https://www.xreal.com/        
 * 
 *****************************************************************************/
 
@@ -86,7 +86,6 @@ namespace NRKernal
             {
                 m_GrabReadyDict.Add(grabble, 1);
             }
-            gameObject.SetActive(false);
         }
 
         /// <summary> Executes the 'trigger exit' action. </summary>
@@ -195,9 +194,9 @@ namespace NRKernal
         /// <param name="target"> Target for the.</param>
         private void GrabTarget(NRGrabbableObject target)
         {
-            if (target == null || !target.CanGrab) // target 이 없거나, 잡을 수 없으면 실행 X
+            if (target == null || !target.CanGrab)
                 return;
-            if (!m_GrabbingList.Contains(target)) // target 이 grablist 에없으면 grablist 에 추가
+            if (!m_GrabbingList.Contains(target))
             {
                 m_GrabbingList.Add(target);
             }
@@ -207,8 +206,8 @@ namespace NRKernal
                 var offsetRotation = Quaternion.Inverse(transform.rotation) * target.transform.rotation;
                 m_GrabStartOffsetDict.Add(target, new Pose(offsetPosition, offsetRotation));
             }
-            m_GrabReadyDict.Remove(target); // grab ready 상태에서 target 을 제거하고
-            target.GrabBegin(this); // grab을 시작한다.
+            m_GrabReadyDict.Remove(target);
+            target.GrabBegin(this);
         }
 
         /// <summary> Move grabbing objects. </summary>
@@ -260,6 +259,7 @@ namespace NRKernal
             {
                 m_GrabbingList[i].GrabEnd();
             }
+            m_GrabReadyDict.Clear();
             m_GrabbingList.Clear();
             m_GrabStartOffsetDict.Clear();
             SetChildrenCollidersEnabled(true);

@@ -9,6 +9,7 @@ TagManager:
   - end
   - endgame
   - bubbles
+  - warning
   layers:
   - Default
   - TransparentFX

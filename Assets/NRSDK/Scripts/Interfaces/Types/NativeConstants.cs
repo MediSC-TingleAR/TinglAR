@@ -1,9 +1,9 @@
-﻿/****************************************************************************
-* Copyright 2019 Nreal Techonology Limited. All rights reserved.
+/****************************************************************************
+* Copyright 2019 Xreal Techonology Limited. All rights reserved.
 *                                                                                                                                                          
 * This file is part of NRSDK.                                                                                                          
 *                                                                                                                                                           
-* https://www.nreal.ai/        
+* https://www.xreal.com/        
 * 
 *****************************************************************************/
 
@@ -22,13 +22,15 @@ namespace NRKernal
 
         public const string VersionCode = "1.5.12";
 
-#if  UNITY_EDITOR
+#if UNITY_EDITOR
         /// <summary> The nr native library. </summary>
         public const string NRNativeLibrary = "libnr_api_editor";
 #elif UNITY_STANDALONE_WIN
         public const string NRNativeLibrary = "libnr_api";
+#elif USING_NR_SERVICE
+        public const string NRNativeLibrary = "nr_service";
 #else
-        public const string NRNativeLibrary = "nr_api";
+        public const string NRNativeLibrary = "nr_loader";
 #endif
 
 #if !UNITY_EDITOR && UNITY_ANDROID
@@ -71,6 +73,7 @@ namespace NRKernal
         public static string GetDisplayFailureErrorTip = "MRSpace display device not find! \nPlease contact customer service.";
         /// <summary> The error tip of running on unsupported device. </summary>
         public static string DisplayModeMismatchErrorTip = "Display mode mismatch, as MRSpace mode is needed! \nPlease contact customer service.";
+        public static string SDKRuntimeNotFoundErrorTip = "Not found sdk runtime! \nPlease start the server app firstly.";
         public static string AudioPermissionDenyErrorTip = "Record audio needs the permission of \n" +
                             "'android.permission.RECORD_AUDIO', Add it to the 'AndroidManifest.xml'";
         public static string ScreenCaptureDenyErrorTip = "Screen capture needs to be approved.";
@@ -82,14 +85,15 @@ namespace NRKernal
         public static string NotificationLevelWarning = "Warning";
 
         #region lost tracking tips
-        public static string TRACKING_MODE_SWITCH_TIP = "Tracking systerm is switching mode...";
+        public static string TRACKING_MODE_SWITCH_TIP = "Tracking system is switching mode...";
         #endregion
 
         #region script order
         public const int NRINPUT_ORDER = -50;
         public const int NRSESSIONBEHAVIOUR_ORDER = -100;
         public const int NRVIRTUALDISPLAY_ORDER = -200;
-        public const int NRRENDER_ORDER = -300;
+        public const int SPECIALEVEN_LISTENER_ORDER = -300;
+        public const int NRPHASESYNC_ORDER = -1000;
         public const int NRKERNALUPDATER_ORDER = -1100;
         #endregion
 
@@ -100,15 +104,12 @@ namespace NRKernal
         public const int RECORD_AUDIO_SAMPLERATE_DEFAULT = 16000;
         public const int RECORD_AUDIO_BYTES_PER_SAMPLE = 2;
         public const int RECORD_AUDIO_CHANNEL = 1;
-        public const float RECORD_VOLUME_MIC = 5;
+        public const float RECORD_VOLUME_MIC = 1;
         public const float RECORD_VOLUME_APP = 1;
         #endregion
 
         #region XR
-        public const string XRPLUGIN = "com.nreal.xr";
-        public const string XRPLUGIN_MIN_VERSION = "0.1.0";
-        public const string XRDEFINE = "USING_XR_SDK";
-        public const string NRSDK_Assembly = "NRSDK.asmdef";
+        public const string NRNativeXRPlugin = "NrealXRPlugin";
         #endregion
     }
 }

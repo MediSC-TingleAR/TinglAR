@@ -1,9 +1,9 @@
 ﻿/****************************************************************************
-* Copyright 2019 Nreal Techonology Limited. All rights reserved.
+* Copyright 2019 Xreal Techonology Limited. All rights reserved.
 *                                                                                                                                                          
 * This file is part of NRSDK.                                                                                                          
 *                                                                                                                                                           
-* https://www.nreal.ai/        
+* https://www.xreal.com/        
 * 
 *****************************************************************************/
 
@@ -13,13 +13,14 @@ namespace NRKernal.NRExamples
     using UnityEngine;
 
     /// <summary> Controller for TrackingImage example. </summary>
-    [HelpURL("https://developer.nreal.ai/develop/unity/image-tracking")]
+    [HelpURL("https://developer.xreal.com/develop/unity/image-tracking")]
     public class TrackingImageExampleController : MonoBehaviour
     {
         /// <summary> A prefab for visualizing an TrackingImage. </summary>
         public TrackingImageVisualizer TrackingImageVisualizerPrefab;
 
         /// <summary> The overlay containing the fit to scan user guide. </summary>
+        public GameObject FitToScanOverlay;
 
         /// <summary> The visualizers. </summary>
         private Dictionary<int, TrackingImageVisualizer> m_Visualizers
@@ -52,7 +53,7 @@ namespace NRKernal.NRExamples
                     NRDebugger.Info("Create new TrackingImageVisualizer!");
                     // Create an anchor to ensure that NRSDK keeps tracking this augmented image.
                     visualizer = (TrackingImageVisualizer)Instantiate(TrackingImageVisualizerPrefab, image.GetCenterPose().position, image.GetCenterPose().rotation);
-                    visualizer.image = image;
+                    visualizer.Image = image;
                     visualizer.transform.parent = transform;
                     m_Visualizers.Add(image.GetDataBaseIndex(), visualizer);
                 }
@@ -62,6 +63,7 @@ namespace NRKernal.NRExamples
                     Destroy(visualizer.gameObject);
                 }
 
+                FitToScanOverlay.SetActive(false);
             }
         }
 

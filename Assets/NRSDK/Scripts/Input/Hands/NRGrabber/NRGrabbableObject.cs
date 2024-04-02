@@ -1,9 +1,9 @@
 ﻿/****************************************************************************
-* Copyright 2019 Nreal Techonology Limited. All rights reserved.
+* Copyright 2019 Xreal Techonology Limited. All rights reserved.
 *                                                                                                                                                          
 * This file is part of NRSDK.                                                                                                          
 *                                                                                                                                                           
-* https://www.nreal.ai/        
+* https://www.xreal.com/        
 * 
 *****************************************************************************/
 
@@ -11,7 +11,6 @@ namespace NRKernal
 {
     using UnityEngine;
     using System;
-    using JetBrains.Annotations;
 
     /// <summary> A nr grabbable object. </summary>
     [RequireComponent(typeof(Rigidbody))]
@@ -69,9 +68,8 @@ namespace NRKernal
         {
             if (IsBeingGrabbed || grabber == null)
                 return;
-            gameObject.SetActive(false);
-            // gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            // Grabber = grabber;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            Grabber = grabber;
             if (m_OnGrabBegan != null)
             {
                 m_OnGrabBegan();
