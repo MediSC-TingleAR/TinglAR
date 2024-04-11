@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.EventSystems;
 
 public class GoToNextScene : MonoBehaviour
 {
@@ -11,13 +12,14 @@ public class GoToNextScene : MonoBehaviour
     private GameObject nextSceneBtn;
 
     void Start()
-    {   nextSceneBtn = gameObject;
+    {   
+        nextSceneBtn = gameObject;
         // 다음 씬 유동적으로 계산.
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         nextsceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
     }
 
-    public void OnClickNextSceneBtn() {
+    public void OnClickNextBtn() {
         SceneManager.LoadScene(nextsceneIndex);
     }
 }

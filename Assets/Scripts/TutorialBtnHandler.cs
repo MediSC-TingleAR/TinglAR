@@ -9,16 +9,17 @@ public class TutorialBtnHandler : MonoBehaviour
     public GameObject[] tutorials;
     private int currentIndex = 0;
     [SerializeField]
-    private int tutorialCount = 4;
+    private int tutorialCount;
     public Button undo;
     public Button next;
     public Button go;
 
     void Start()
     {
+        tutorialCount = tutorials.Length;
         ActivateTutorialPopup(tutorials[0]);
-        undo.onClick.AddListener(()=> OnClickUndo());
-        next.onClick.AddListener(()=> OnClickNext());
+        go.gameObject.GetComponent<Button>().interactable = false;
+
     }
 
     void ActivateTutorialPopup(GameObject target)
@@ -27,31 +28,35 @@ public class TutorialBtnHandler : MonoBehaviour
         {
             obj.SetActive(obj == target);
         }
-        if (target == tutorials[3]) {
-            next.gameObject.SetActive(false);
-            go.gameObject.SetActive(true);
+        if (target == tutorials[tutorialCount-1]) //만약 마지막 페이지라면
+        { 
+            next.gameObject.GetComponent<Button>().interactable = false;
+            go.gameObject.GetComponent<Button>().interactable = true;
         }
-        if (target != tutorials[0]) {
-            next.gameObject.SetActive(true);
-            undo.gameObject.SetActive(true);
+        else if (target == tutorials[0]) //만약 첫번째 페이지라면
+        {
+            undo.gameObject.GetComponent<Button>().interactable = false;
+            go.gameObject.GetComponent<Button>().interactable = false;
+
         }
         else
-            undo.gameObject.SetActive(false);
+        {
+            undo.gameObject.GetComponent<Button>().interactable = true;
+            next.gameObject.GetComponent<Button>().interactable = true;
+        }
     }   
 
-    void OnClickUndo()
+     public void OnClickUndo()
     {
-        currentIndex = (currentIndex - 1) % tutorialCount;
-        if(currentIndex <= tutorialCount){
-            ActivateTutorialPopup(tutorials[currentIndex]);
-        }
+        currentIndex = (currentIndex - 1 + tutorialCount) % tutorialCount;
+        Debug.Log("Current Index: " + currentIndex);
+        ActivateTutorialPopup(tutorials[currentIndex]);
     }
 
-    void OnClickNext()
+    public void OnClickNext()
     {
-        currentIndex = (currentIndex - 1) % tutorialCount;
-        if(currentIndex <= tutorialCount){
-            ActivateTutorialPopup(tutorials[currentIndex]);
-        }
+        currentIndex = (currentIndex + 1) % tutorialCount;
+        Debug.Log("Current Index: " + currentIndex);
+        ActivateTutorialPopup(tutorials[currentIndex]);
     }
 }

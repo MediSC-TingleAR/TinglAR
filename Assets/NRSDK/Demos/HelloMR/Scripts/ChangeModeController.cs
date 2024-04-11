@@ -13,6 +13,7 @@ namespace NRKernal.NRExamples
 {
     public class ChangeModeController : MonoBehaviour
     {
+        public GameObject bb;
         private void Start()
         {
             NRSessionManager.Instance.NRHMDPoseTracker.OnModeChanged += (result) =>
@@ -23,11 +24,13 @@ namespace NRKernal.NRExamples
 
         public void ChangeTo6Dof()
         {
+            bb.SetActive(true);
             NRSessionManager.Instance.NRHMDPoseTracker.ChangeTo6Dof();
         }
 
         public void ChangeTo3Dof()
         {
+            bb.SetActive(false);
             NRSessionManager.Instance.NRHMDPoseTracker.ChangeTo3Dof();
         }
 
