@@ -21,6 +21,7 @@ public class GoToNextScene : MonoBehaviour
     }
 
     public void onClickNextBtn() {
+        Debug.Log("Let's Go");
         SceneManager.LoadScene(nextsceneIndex);
     }
 }
