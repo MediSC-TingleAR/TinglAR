@@ -22,13 +22,14 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        // attack_anim.StopPlayback();
+        attack_anim.speed = 0f;
         subGameManager.FreezeScore();
-        // Invoke("RestartAnim",3f);
+        StartCoroutine(RestartAnim());
     }
 
-    void RestartAnim()
+    IEnumerator RestartAnim()
     {
-        attack_anim.StartPlayback();
+        yield return new WaitForSeconds(2f);
+        attack_anim.speed = 1f;
     }
 }

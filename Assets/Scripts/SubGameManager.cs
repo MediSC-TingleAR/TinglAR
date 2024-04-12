@@ -27,8 +27,6 @@ public class SubGameManager : MonoBehaviour
     {
         if (count == 20)
         {
-            if(FreezeCntText = null) Debug.Log ("FreezeCntText is null");
-        if(endSubGame == null) Debug.Log ("endSubGame is null");
             endSubGame.FinSubGame();
         }
     }
