@@ -35,6 +35,8 @@ namespace NRKernal.NRExamples
         /// <summary> The vertical rotation inverse. </summary>
         private Quaternion VerticalRotationInverse;
 
+        public Vector3 cameraPosi;
+
         /// <summary> The offset. </summary>
         [SerializeField, Tooltip("The offset from the view port center applied based on the window anchor selection.")]
         private Vector2 Offset = new Vector2(0.1f, 0.1f);
@@ -79,6 +81,7 @@ namespace NRKernal.NRExamples
             }
             float t = Time.deltaTime * FollowSpeed;
             transform.position = Vector3.Lerp(transform.position, CalculatePosition(CenterCamera), t);
+            cameraPosi = transform.position;
             transform.rotation = Quaternion.Slerp(transform.rotation, CalculateRotation(CenterCamera), t);
         }
 

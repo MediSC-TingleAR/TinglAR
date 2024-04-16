@@ -15,11 +15,6 @@ public class InteractionTest : MonoBehaviour, IPointerClickHandler
 		});
 }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("클릭함");
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("클릭함");
