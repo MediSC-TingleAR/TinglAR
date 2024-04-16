@@ -35,6 +35,8 @@ public class SubGameManager : MonoBehaviour
     {
         count += 1;
         Debug.Log($"{count}");
-        FreezeCntText.text = $"얼린 횟수 : {count}";
+        FreezeCntText.text = $"죽인 횟수 : {count}";
     }
+
+    
 }

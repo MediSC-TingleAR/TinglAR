@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using NRKernal;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class CountScore : MonoBehaviour, IPointerClickHandler
 {
+    private SpawnEnemies spawnEnemies;
     private SubGameManager subGameManager;
     private Animator attack_anim;
+    
+
     void Start()
     {
+        spawnEnemies = GameObject.Find("Enemies").GetComponent<SpawnEnemies>();
         attack_anim = GetComponent<Animator>();
         subGameManager = GameObject.Find("subGameManager").GetComponent<SubGameManager>();
 
@@ -22,9 +27,12 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        attack_anim.speed = 0f;
-        subGameManager.FreezeScore();
-        StartCoroutine(RestartAnim());
+        attack_anim.speed = 0f; //애니메이션 멈추게
+        subGameManager.FreezeScore(); //스코어 올라가게
+        gameObject.SetActive(false);
+        spawnEnemies.spawnCount -= 1;
+
+        // StartCoroutine(RestartAnim());
     }
 
     IEnumerator RestartAnim()
