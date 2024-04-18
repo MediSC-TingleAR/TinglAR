@@ -9,14 +9,16 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
 {
     private SpawnEnemies spawnEnemies;
     private SubGameManager subGameManager;
-    private Animator attack_anim;
+    private Animator anim;
     
 
     void Start()
     {
         spawnEnemies = GameObject.Find("Enemies").GetComponent<SpawnEnemies>();
-        attack_anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         subGameManager = GameObject.Find("subGameManager").GetComponent<SubGameManager>();
+
+        anim.SetBool("isDead",false);
 
         NRInput.AddClickListener(ControllerHandEnum.Right, ControllerButton.APP, () =>
             {
@@ -27,17 +29,17 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        attack_anim.speed = 0f; //애니메이션 멈추게
         subGameManager.FreezeScore(); //스코어 올라가게
-        gameObject.SetActive(false);
+        StartCoroutine(DieAnim());
         spawnEnemies.spawnCount -= 1;
 
         // StartCoroutine(RestartAnim());
     }
 
-    IEnumerator RestartAnim()
+    IEnumerator DieAnim()
     {
-        yield return new WaitForSeconds(2f);
-        attack_anim.speed = 1f;
+        anim.SetBool("isDead",true);
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

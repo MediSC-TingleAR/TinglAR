@@ -72,7 +72,7 @@ public class SpawnEnemies : MonoBehaviour
     Vector3 GetRandomSpawnPosition()
     {
         float xPos = transform.position.x + Random.Range(-1.5f, 1.5f); 
-        float yPos = transform.position.y + Random.Range(-0.5f, 0.2f);
+        float yPos = transform.position.y + Random.Range(-0.4f, 0.1f);
 
         return new Vector3(xPos, yPos, 0);
     }
