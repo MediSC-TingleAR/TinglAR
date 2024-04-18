@@ -7,19 +7,13 @@ public class SpawnEnemies : MonoBehaviour
 {
     public GameObject[] SpawnObjects; // 생성될 오브젝트
 
-    private int maxCount = 15; //씬에 생성되는 오브젝트 최대 개수
+    private int maxCount = 10; //씬에 생성되는 오브젝트 최대 개수
     public int spawnCount = 0; //현재 생성된 오브젝트의 개수
-    private int setFirstSpawnCount = 10;
-    private Vector3 cameraPosi;
-    private Quaternion cameraRott;
+    private int setFirstSpawnCount = 5;
     private bool isSpawning = false;
-
-    private Transform cameraInfo;
-    public GameObject cam;
 
     void Start()
     {
-        cameraInfo = cam.transform;
         FirstSpawn();
         gameObject.SetActive(false);
     }
@@ -27,13 +21,10 @@ public class SpawnEnemies : MonoBehaviour
     {
         if (gameObject.activeSelf && !isSpawning)
         {
-            cameraPosi = cameraInfo.position;
-            cameraRott = cameraInfo.rotation;
             StartCoroutine(StartSpawning());
         }
             
     }
-
     void FirstSpawn()
     {
         while (spawnCount < setFirstSpawnCount)
@@ -48,8 +39,6 @@ public class SpawnEnemies : MonoBehaviour
             spawnedObject.transform.localPosition = spawnPosition;
             spawnedObject.transform.localRotation = spawnRotation;
             spawnedObject.SetActive(true);
-
-            Camera mainCamera = Camera.main;
 
             spawnCount += 1;
             
@@ -72,11 +61,8 @@ public class SpawnEnemies : MonoBehaviour
             spawnedObject.transform.localRotation = spawnRotation;
             spawnedObject.SetActive(true);
 
-            Camera mainCamera = Camera.main;
-
             spawnCount += 1;
 
-            Debug.Log("Printing");
             yield return new WaitForSeconds(3);
         }
 
@@ -85,12 +71,10 @@ public class SpawnEnemies : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float xPos = Random.Range(-1f, 1f); 
-        float yPos = Random.Range(-0.5f, 0.5f);
+        float xPos = transform.position.x + Random.Range(-1f, 1f); 
+        float yPos = transform.position.y + Random.Range(-0.5f, 0.5f);
 
-        float xPos_n = cameraPosi.x + xPos;
-        float yPos_n = cameraPosi.y + yPos;
-        return new Vector3(xPos_n, yPos_n, 0);
+        return new Vector3(xPos, yPos, 0);
     }
 
     Quaternion GetRandomSpawnRotation()
@@ -98,9 +82,7 @@ public class SpawnEnemies : MonoBehaviour
         float xRot = 0f;
         float yRot = 180f;
 
-        float xRot_n = cameraRott.x + xRot;
-        float yRot_n = cameraRott.y + yRot;
-        Quaternion randomRotation = Quaternion.Euler(xRot_n, yRot_n, 0);
+        Quaternion randomRotation = Quaternion.Euler(xRot, yRot, 0);
 
         return randomRotation;
     }
