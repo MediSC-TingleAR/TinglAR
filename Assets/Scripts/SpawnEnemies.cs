@@ -63,7 +63,7 @@ public class SpawnEnemies : MonoBehaviour
 
             spawnCount += 1;
 
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
         }
 
         isSpawning = false;
@@ -71,8 +71,8 @@ public class SpawnEnemies : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float xPos = transform.position.x + Random.Range(-1f, 1f); 
-        float yPos = transform.position.y + Random.Range(-0.5f, 0.5f);
+        float xPos = transform.position.x + Random.Range(-1.5f, 1.5f); 
+        float yPos = transform.position.y + Random.Range(-0.5f, 0.2f);
 
         return new Vector3(xPos, yPos, 0);
     }
