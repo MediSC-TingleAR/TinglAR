@@ -5,43 +5,62 @@ using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public GameObject[] SpawnObjects; // 생성될 오브젝트
+    public GameObject[] SpawnObjects;
+    public int setFirstSpawnCount = 5;
+    private int maxCount = 5;
+    public float spawnRadiusX = 1.5f;
+    public float spawnRadiusY = 0.4f;
+    public float spawnInterval = 2f; // Spawn 간격
+    public int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
 
-    private int maxCount = 10; //씬에 생성되는 오브젝트 최대 개수
-    public int spawnCount = 0; //현재 생성된 오브젝트의 개수
-    private int setFirstSpawnCount = 5;
+    public int spawnCount = 0;
     private bool isSpawning = false;
+    
+    private Vector3 GetSafeSpawnPosition()
+    {
+        Vector3 spawnPosition;
+        int attempts = 0;
+
+        do
+        {
+            spawnPosition = GetRandomSpawnPosition();
+            attempts++;
+        } while (Physics.CheckSphere(spawnPosition, 0.3f) && attempts < maxAttempts);
+
+        return spawnPosition;
+    }
+
+    private void SpawnObject()
+    {
+        Vector3 spawnPosition = GetSafeSpawnPosition();
+        Quaternion spawnRotation = GetRandomSpawnRotation();
+
+        int randomIndex = Random.Range(0, SpawnObjects.Length);
+
+        GameObject spawnedObject = Instantiate(SpawnObjects[randomIndex], transform);
+
+        spawnedObject.transform.localPosition = spawnPosition;
+        spawnedObject.transform.localRotation = spawnRotation;
+        spawnedObject.SetActive(true);
+
+        spawnCount++;
+    }
 
     void Start()
     {
-        FirstSpawn();
-        gameObject.SetActive(false);
+        for (int i = 0; i < setFirstSpawnCount; i++)
+        {
+            SpawnObject(); // 처음에 지정된 수만큼 스폰
+        }
+
+        gameObject.SetActive(false); // 스폰 후 비활성화
     }
+
     void Update()
     {
         if (gameObject.activeSelf && !isSpawning)
         {
             StartCoroutine(StartSpawning());
-        }
-            
-    }
-    void FirstSpawn()
-    {
-        while (spawnCount < setFirstSpawnCount)
-        {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
-            Quaternion spawnRotation = GetRandomSpawnRotation();
-
-            int randomIndex = Random.Range(0, SpawnObjects.Length);
-
-            GameObject spawnedObject = Instantiate(SpawnObjects[randomIndex],transform);
-
-            spawnedObject.transform.localPosition = spawnPosition;
-            spawnedObject.transform.localRotation = spawnRotation;
-            spawnedObject.SetActive(true);
-
-            spawnCount += 1;
-            
         }
     }
 
@@ -51,39 +70,26 @@ public class SpawnEnemies : MonoBehaviour
 
         while (spawnCount < maxCount)
         {
-            Vector3 spawnPosition = GetRandomSpawnPosition();
-            Quaternion spawnRotation = GetRandomSpawnRotation();
-            
-            int randomIndex = Random.Range(0, SpawnObjects.Length);
-
-            GameObject spawnedObject = Instantiate(SpawnObjects[randomIndex],transform);
-            spawnedObject.transform.localPosition = spawnPosition;
-            spawnedObject.transform.localRotation = spawnRotation;
-            spawnedObject.SetActive(true);
-
-            spawnCount += 1;
-
-            yield return new WaitForSeconds(2);
+            SpawnObject(); // 객체 생성
+            yield return new WaitForSeconds(spawnInterval); // 스폰 간격
         }
 
         isSpawning = false;
     }
 
-    Vector3 GetRandomSpawnPosition()
+    public Vector3 GetRandomSpawnPosition()
     {
-        float xPos = transform.position.x + Random.Range(-1.5f, 1.5f); 
-        float yPos = transform.position.y + Random.Range(-0.4f, 0.1f);
-
+        float xPos = transform.position.x + Random.Range(-spawnRadiusX, spawnRadiusX); //1.5
+        float yPos = transform.position.y + Random.Range(-spawnRadiusY, spawnRadiusY); //0.4
+        
         return new Vector3(xPos, yPos, 0);
     }
 
-    Quaternion GetRandomSpawnRotation()
+    public Quaternion GetRandomSpawnRotation()
     {
         float xRot = 0f;
         float yRot = 180f;
 
-        Quaternion randomRotation = Quaternion.Euler(xRot, yRot, 0);
-
-        return randomRotation;
+        return Quaternion.Euler(xRot, yRot, 0);
     }
 }

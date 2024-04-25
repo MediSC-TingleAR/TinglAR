@@ -10,6 +10,7 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
     private SpawnEnemies spawnEnemies;
     private SubGameManager subGameManager;
     private Animator anim;
+    int a = 1; //moving 방향
     
 
     void Start()
@@ -27,6 +28,22 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
                 poseTracker.ResetWorldMatrix();
             });
     }
+
+    void Update()
+    {
+        if(gameObject.transform.position.x < -0.3f)
+        {
+            a = 1;
+        }
+        else if(gameObject.transform.position.x > 0.3f) 
+        {
+            a= -1;
+        }
+        Debug.Log($"{gameObject.transform.position}");
+
+        gameObject.transform.Translate(Vector3.left * Time.deltaTime * a * 0.3f);
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         subGameManager.FreezeScore(); //스코어 올라가게
