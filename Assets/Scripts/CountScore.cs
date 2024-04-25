@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using NRKernal;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
 public class CountScore : MonoBehaviour, IPointerClickHandler
@@ -11,6 +9,7 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
     private SubGameManager subGameManager;
     private Animator anim;
     int a = 1; //moving 방향
+    bool isKilled = false;
     
 
     void Start()
@@ -46,11 +45,13 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(!isKilled)
+        {
         subGameManager.FreezeScore(); //스코어 올라가게
         StartCoroutine(DieAnim());
         spawnEnemies.spawnCount -= 1;
-
-        // StartCoroutine(RestartAnim());
+        isKilled = true;
+        }
     }
 
     IEnumerator DieAnim()
