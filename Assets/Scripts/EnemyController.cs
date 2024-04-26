@@ -1,16 +1,16 @@
 using System.Collections;
 using NRKernal;
+using OpenCVForUnityExample;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CountScore : MonoBehaviour, IPointerClickHandler
+public class EnemyController : MonoBehaviour, IPointerClickHandler
 {
     private SpawnEnemies spawnEnemies;
     private SubGameManager subGameManager;
     private Animator anim;
     int a = 1; //moving 방향
     bool isKilled = false;
-    
 
     void Start()
     {
@@ -28,6 +28,8 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
             });
     }
 
+
+
     void Update()
     {
         if(gameObject.transform.position.x < -0.3f)
@@ -38,9 +40,8 @@ public class CountScore : MonoBehaviour, IPointerClickHandler
         {
             a= -1;
         }
-        Debug.Log($"{gameObject.transform.position}");
 
-        gameObject.transform.Translate(Vector3.left * Time.deltaTime * a * 0.3f);
+        gameObject.transform.Translate(Vector3.left * Time.deltaTime * a * 0.35f);
     }
 
     public void OnPointerClick(PointerEventData eventData)

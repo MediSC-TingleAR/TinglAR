@@ -10,6 +10,8 @@ TagManager:
   - endgame
   - bubbles
   - warning
+  - pet
+  - Character
   layers:
   - Default
   - TransparentFX
