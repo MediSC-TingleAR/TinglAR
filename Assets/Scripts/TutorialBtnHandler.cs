@@ -1,62 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using NRKernal;
+using NRKernal.NREditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TutorialBtnHandler : MonoBehaviour
 {
-    public GameObject[] tutorials;
-    private int currentIndex = 0;
-    [SerializeField]
-    private int tutorialCount;
-    public Button undo;
-    public Button next;
-    public Button go;
+    public GameObject[] tutorials; //튜토리얼 각 화면의 UI들
+    public int currentIndex = 0;
+    private ControllerHandEnum m_CurrentDebugHand = ControllerHandEnum.Right;
+
+    public GameObject controllerClick;
+    public GameObject Enemy;
 
     void Start()
     {
-        tutorialCount = tutorials.Length;
-        ActivateTutorialPopup(tutorials[0]);
-        go.gameObject.GetComponent<Button>().interactable = false;
-
+        for(int i=1; i<tutorials.Length; i++)
+        {
+            tutorials[i].SetActive(false);
+        }
+        Enemy.SetActive(false);   
     }
 
-    void ActivateTutorialPopup(GameObject target)
-    {   
-        foreach (GameObject obj in tutorials)
+    void Update()
         {
-            obj.SetActive(obj == target);
-        }
-        if (target == tutorials[tutorialCount-1]) //만약 마지막 페이지라면
-        { 
-            next.gameObject.GetComponent<Button>().interactable = false;
-            go.gameObject.GetComponent<Button>().interactable = true;
-        }
-        else if (target == tutorials[0]) //만약 첫번째 페이지라면
-        {
-            undo.gameObject.GetComponent<Button>().interactable = false;
-            go.gameObject.GetComponent<Button>().interactable = false;
+            if (NRInput.GetAvailableControllersCount() < 2)
+            {
+                m_CurrentDebugHand = NRInput.DomainHand;
+            }
+            else
+            {
+                if (NRInput.GetButtonDown(ControllerHandEnum.Right, ControllerButton.TRIGGER))
+                {
+                    m_CurrentDebugHand = ControllerHandEnum.Right;
+                }
+                else if (NRInput.GetButtonDown(ControllerHandEnum.Left, ControllerButton.TRIGGER))
+                {
+                    m_CurrentDebugHand = ControllerHandEnum.Left;
+                }
+            }
+
+            if (currentIndex != 4 && currentIndex < 7 && NRInput.GetButtonDown(m_CurrentDebugHand, ControllerButton.TRIGGER))
+            {
+                NextPanel();
+
+            }
+            else if (currentIndex == 4)
+            {
+                controllerClick.SetActive(false);
+                Enemy.SetActive(true);
+
+            }
 
         }
-        else
-        {
-            undo.gameObject.GetComponent<Button>().interactable = true;
-            next.gameObject.GetComponent<Button>().interactable = true;
-        }
-    }   
 
-     public void OnClickUndo()
+    public void NextPanel()
     {
-        currentIndex = (currentIndex - 1 + tutorialCount) % tutorialCount;
-        Debug.Log("Current Index: " + currentIndex);
-        ActivateTutorialPopup(tutorials[currentIndex]);
-    }
+        currentIndex ++;
+        tutorials[currentIndex].SetActive(true);
+        tutorials[currentIndex-1].SetActive(false);
 
-    public void OnClickNext()
-    {
-        currentIndex = (currentIndex + 1) % tutorialCount;
-        Debug.Log("Current Index: " + currentIndex);
-        ActivateTutorialPopup(tutorials[currentIndex]);
     }
 }
+
