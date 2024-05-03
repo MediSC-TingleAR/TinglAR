@@ -8,6 +8,7 @@ public class tutorialEnemy : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 {
 
     public GameObject hoverObject;
+    public GameObject Enemy;
     private TutorialBtnHandler tutohandler;
 
     private Animator anim;
@@ -18,11 +19,12 @@ public class tutorialEnemy : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 			var poseTracker = NRSessionManager.Instance.NRHMDPoseTracker;
 			poseTracker.ResetWorldMatrix();
 		});
-        
+
+        Enemy.SetActive(false);
         hoverObject.SetActive(false);
         tutohandler = GameObject.Find("Canvas/Tutorials").GetComponent<TutorialBtnHandler>();
 
-        anim = GetComponent<Animator>();
+        anim = Enemy.GetComponent<Animator>();
         anim.SetBool("isDead",false);
     }
 
@@ -58,7 +60,7 @@ public class tutorialEnemy : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         anim.SetBool("isDead",true);
         hoverObject.SetActive(false);
         yield return new WaitForSeconds(2);
-        gameObject.SetActive(false);
+        Enemy.SetActive(false);
         
         tutohandler.currentIndex = 5;
         tutohandler.NextPanel();

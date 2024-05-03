@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using NRKernal;
-using NRKernal.NREditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
