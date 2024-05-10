@@ -1,6 +1,6 @@
 using System.Collections;
 using NRKernal;
-using OpenCVForUnityExample;
+//using OpenCVForUnityExample;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
