@@ -7,13 +7,13 @@ public class SpawnEnemies : MonoBehaviour
 {
     public GameObject[] SpawnObjects;
     public int setFirstSpawnCount = 5;
-    private int maxCount = 5;
-    public float spawnRadiusX = 1.5f;
-    public float spawnRadiusY = 0.4f;
-    public float spawnInterval = 2f; // Spawn 간격
-    public int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
+    public int maxCount = 5;
+    [HideInInspector] public float spawnRadiusX = 1.5f;
+    [HideInInspector] public float spawnRadiusY = 0.4f;
+    [HideInInspector] public float spawnInterval = 2f; // Spawn 간격
+    [HideInInspector]  public int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
 
-    public int spawnCount = 0;
+    [HideInInspector] public int spawnCount = 0;
     private bool isSpawning = false;
     
     private Vector3 GetSafeSpawnPosition()

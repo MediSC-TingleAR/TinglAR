@@ -36,7 +36,7 @@ public class MainCharController : MonoBehaviour
             StartCoroutine(DieAnim());
         }
         
-        float damagedHP = HP - 0.6f;
+        float damagedHP = HP - 0.05f;
         HP = damagedHP;
         hpBar.value = HP;
         anim.SetFloat("isInjured",HP);
