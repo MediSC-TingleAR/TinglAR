@@ -29,14 +29,14 @@ public class MainCharController : MonoBehaviour
         
     }
 
-    public void GetDamage()
+    public void GetDamage(float damagePoint)
     {
         if(HP < 1)
         {
             StartCoroutine(DieAnim());
         }
         
-        float damagedHP = HP - 0.05f;
+        float damagedHP = HP - damagePoint;
         HP = damagedHP;
         hpBar.value = HP;
         anim.SetFloat("isInjured",HP);

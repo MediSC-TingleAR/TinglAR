@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using NRKernal.NRExamples;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
 {
     public GameObject[] SpawnObjects;
-    public int setFirstSpawnCount = 5;
-    public int maxCount = 5;
-    [HideInInspector] public float spawnRadiusX = 1.5f;
-    [HideInInspector] public float spawnRadiusY = 0.4f;
-    [HideInInspector] public float spawnInterval = 2f; // Spawn 간격
-    [HideInInspector]  public int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
-
-    [HideInInspector] public int spawnCount = 0;
+    public int enemySpawn = 5;
+    [SerializeField] private int maxCount = 10;
+    private int enemycount = 0;
+    [HideInInspector] public int spawnCount = 0; //현재 화면에 떠있는 Enemy 수
+    private float spawnRadiusX = 1.5f;
+    private float spawnRadiusY = 0.4f;
+    private float spawnInterval = 2f; // Spawn 간격
+    private int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
     private bool isSpawning = false;
     
     private Vector3 GetSafeSpawnPosition()
@@ -48,7 +49,8 @@ public class SpawnEnemies : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < setFirstSpawnCount; i++)
+        enemycount = enemySpawn;
+        for (int i = 0; i < enemySpawn; i++)
         {
             SpawnObject(); // 처음에 지정된 수만큼 스폰
         }
@@ -68,9 +70,10 @@ public class SpawnEnemies : MonoBehaviour
     {
         isSpawning = true;
 
-        while (spawnCount < maxCount)
+        while (spawnCount < enemySpawn && enemycount < maxCount)
         {
             SpawnObject(); // 객체 생성
+            enemycount ++;
             yield return new WaitForSeconds(spawnInterval); // 스폰 간격
         }
 

@@ -9747,6 +9747,9 @@ GameObject:
   - component: {fileID: 5862613817031353211}
   - component: {fileID: 6469354921825657977}
   - component: {fileID: 5744350271466584198}
+  - component: {fileID: 7012109235567913782}
+  - component: {fileID: 4682620705881809094}
+  - component: {fileID: 8812301623762748461}
   m_Layer: 0
   m_Name: Lightning aura
   m_TagString: Untagged
@@ -14578,6 +14581,54 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!136 &7012109235567913782
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131401307255788800}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.07
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.0000001, z: 0}
+--- !u!114 &4682620705881809094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131401307255788800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39543418101626b4d9ea1a6486f3d1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6365611236162200223, guid: 4f2eab68735a56b4da2a263f5cdef345, type: 3}
+--- !u!114 &8812301623762748461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131401307255788800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb3bb0c6e95f8a4a88fd1ee248b307d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2322716205476586186
 PrefabInstance:
   m_ObjectHideFlags: 0

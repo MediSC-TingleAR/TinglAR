@@ -9,7 +9,7 @@ public class tutorialEnemy : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public GameObject hoverObject;
     public GameObject Enemy;
-    private TutorialBtnHandler tutohandler;
+    private UIPanelHandler tutohandler;
 
     private Animator anim;
     void Start()
@@ -22,7 +22,7 @@ public class tutorialEnemy : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         Enemy.SetActive(false);
         hoverObject.SetActive(false);
-        tutohandler = GameObject.Find("Canvas/Tutorials").GetComponent<TutorialBtnHandler>();
+        tutohandler = GameObject.Find("Canvas/Tutorials").GetComponent<UIPanelHandler>();
 
         anim = Enemy.GetComponent<Animator>();
         anim.SetBool("isDead",false);

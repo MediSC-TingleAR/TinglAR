@@ -48,9 +48,9 @@ public class EnemyController : MonoBehaviour, IPointerClickHandler
     {
         if(!isKilled)
         {
-        subGameManager.FreezeScore(); //스코어 올라가게
         StartCoroutine(DieAnim());
         spawnEnemies.spawnCount -= 1;
+        subGameManager.count ++;
         isKilled = true;
         }
     }

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 0.1f;
     private Rigidbody bulletRigidbody;
+    [SerializeField] private float damageP;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class Bullet : MonoBehaviour
         if(other.tag == "Character")
         {
             MainCharController characterController = other.GetComponent<MainCharController>();
-            characterController.GetDamage();
+            characterController.GetDamage(damageP);
         }
     }
 }
