@@ -16,7 +16,7 @@ public class BulletSpawn : MonoBehaviour
     {
         timeAfterSpawn = 0f;
         spawnRate = Random.Range(spawnRateMin,spawnRateMax);
-        target = GameObject.Find("ARGameObject/GameObject").transform;
+        target = GameObject.Find("ARGameObject/GameObject/Byullgom_StandingIdle").transform;
     }
 
     void Update()

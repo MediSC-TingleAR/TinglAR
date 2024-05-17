@@ -1372,15 +1372,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 6.5999994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 6.5999994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 6.5999994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1388,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 47cf7b3725c83a04a9b8286a7fe9d9ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1456,6 +1456,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202870993241434535, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 202870993241434535, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 202870993241434535, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.82
+      objectReference: {fileID: 0}
     - target: {fileID: 202870993241434535, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1679,7 +1691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 13.31}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1048190148
