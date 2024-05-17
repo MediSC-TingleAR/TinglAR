@@ -21,7 +21,6 @@ public class SemiDoneController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         GJ.SetActive(true);
-        StartCoroutine(StartBossGame());
 
         yield return new WaitForSeconds(2);
         GJ.SetActive(false);

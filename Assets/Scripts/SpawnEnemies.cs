@@ -17,7 +17,7 @@ public class SpawnEnemies : MonoBehaviour
     private int maxAttempts = 10; // 충돌 체크를 위한 최대 시도 횟수
     private bool isSpawning = false;
     
-    private Vector3 GetSafeSpawnPosition()
+    public Vector3 GetSafeSpawnPosition()
     {
         Vector3 spawnPosition;
         int attempts = 0;
@@ -31,7 +31,7 @@ public class SpawnEnemies : MonoBehaviour
         return spawnPosition;
     }
 
-    private void SpawnObject()
+    public void SpawnObject()
     {
         Vector3 spawnPosition = GetSafeSpawnPosition();
         Quaternion spawnRotation = GetRandomSpawnRotation();
@@ -54,8 +54,8 @@ public class SpawnEnemies : MonoBehaviour
         {
             SpawnObject(); // 처음에 지정된 수만큼 스폰
         }
-
-        gameObject.SetActive(false); // 스폰 후 비활성화
+        if (gameObject.name != "Boss")
+            gameObject.SetActive(false); // 스폰 후 비활성화
     }
 
     void Update()

@@ -11,7 +11,6 @@ public class SubGameManager : MonoBehaviour
     private GameObject FindSticker;
     private CameraSmoothFollow Enemies;
     private GameObject Done;
-    private GameObject ARObj;
     private GameObject Boss;
     private GameObject SemiDone;
     void Start()
@@ -19,7 +18,6 @@ public class SubGameManager : MonoBehaviour
         Enemies = GameObject.Find("Enemies").GetComponent<CameraSmoothFollow>();
         FindSticker = GameObject.Find("Canvas/findSticker");
         Done = GameObject.Find("Canvas/Done");
-        ARObj = GameObject.Find("ARGameObject");
         Boss = GameObject.Find("Boss");
         SemiDone = GameObject.Find("Canvas/Semi_Done");
 
@@ -55,9 +53,9 @@ public class SubGameManager : MonoBehaviour
 
     public void FinSubGame()
     {
+        Boss.SetActive(false);
         Done.SetActive(true);
-        ARObj.SetActive(false);
-
+        // ARObj.SetActive(false);
     }
 
     public void SemiFinSubGame()
