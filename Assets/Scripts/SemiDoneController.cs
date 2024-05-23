@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
-using OpenCVForUnityExample;
 using UnityEngine;
 
 public class SemiDoneController : MonoBehaviour
