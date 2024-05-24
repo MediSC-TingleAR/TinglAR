@@ -7,6 +7,7 @@ namespace MainGame
 {
     public class MainGameManager : MonoBehaviour
     {
+        [SerializeField] private MainGameUI _mainGameUI;
         [Header("Canvases")]
         [SerializeField] private GameObject _niceWorkCanvas;
         [SerializeField] private GameObject _finishGameCanvas;
@@ -15,6 +16,7 @@ namespace MainGame
         [Header("GameModules")]
         [SerializeField] private InjectionCheck _injectionCheck;
         [SerializeField] private SplashAttack _splashAttack;
+        [SerializeField] private Boss _boss;
         [SerializeField] private GameObject _enemyModule;
 
         [Space(10)]
@@ -27,6 +29,7 @@ namespace MainGame
         {
             _injectionCheck.onInjected += OnFinishInjection;
             _splashAttack.onKillEnemy += SetKillCount;
+            _boss.onKilled += onKillBoss;
         }
 
         public void OnFinishInjection()
@@ -46,8 +49,12 @@ namespace MainGame
 
         public void OnFinishKillGerms()
         {
-            _splashAttack.gameObject.SetActive(false);
-            _finishPanel.gameObject.SetActive(true);
+            _boss.IsWakeUp = true;
+        }
+
+        private void onKillBoss()
+        {
+            Debug.Log("Boss Killed");
         }
 
         private void SetKillCount(int count)
