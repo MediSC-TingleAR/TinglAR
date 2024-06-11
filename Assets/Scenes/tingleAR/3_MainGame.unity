@@ -3245,7 +3245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f0accd6032c44edacfbffc3925ee29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainGameUI: {fileID: 0}
+  _followCanvas: {fileID: 5269840466673482239}
   _niceWorkCanvas: {fileID: 2046409107315108346}
   _finishGameCanvas: {fileID: 199610077}
   _finishPanel: {fileID: 199610077}
