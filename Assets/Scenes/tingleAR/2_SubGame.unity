@@ -732,6 +732,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1926754754249243537, guid: 93b1e1b49e46b1e428cdaf9a5562a11f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1970873035628025971, guid: 93b1e1b49e46b1e428cdaf9a5562a11f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1514,7 +1518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 792252493956669206, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
       propertyPath: m_Name
-      value: ARGameObject
+      value: ARGameObjectSub
       objectReference: {fileID: 0}
     - target: {fileID: 792252493956669206, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
       propertyPath: m_IsActive
@@ -1532,6 +1536,10 @@ PrefabInstance:
       propertyPath: FreezeCount
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1173209747533116924, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}
+      propertyPath: subgameController
+      value: 
+      objectReference: {fileID: 1374645681}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3394455156074249583, guid: 9fa6c65019e26144fbb5c8ed61b43a90, type: 3}

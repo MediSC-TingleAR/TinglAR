@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/tingleAR/0_MainScene.unity
     guid: 2223d412ae174ea4486e59b84037a2f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/tingleAR/1_Tutorial.unity
     guid: 7b2d52a201990b3468e827dc937beca7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/tingleAR/2_SubGame.unity
     guid: 14b202e1318892c4884b2875c6c9b781
   - enabled: 1

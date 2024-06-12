@@ -13,7 +13,7 @@ public class MainCharController : MonoBehaviour
 
     void Start()
     {
-        hpBar = GameObject.Find("ARGameObject/GameObject/Canvas/Slider").GetComponent<Slider>();
+        hpBar = GameObject.Find("ARGameObjectSub/GameObject/Canvas/Slider").GetComponent<Slider>();
 
         anim = GetComponent<Animator>();
         anim.SetBool("isDie",false);

@@ -9,7 +9,7 @@ public class DoneController : MonoBehaviour
     [SerializeField] private GameObject done2;
     void Start()
     {
-        ARObj = GameObject.Find("ARGameObject");
+        ARObj = GameObject.Find("ARGameObjectSub");
         done1.SetActive(false);
         done2.SetActive(false);
 

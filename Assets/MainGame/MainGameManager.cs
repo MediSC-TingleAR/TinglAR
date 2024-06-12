@@ -7,6 +7,9 @@ namespace MainGame
 {
     public class MainGameManager : MonoBehaviour
     {
+        public GameObject RegainPanel;
+        public GameObject scanucoPanel;
+
         [SerializeField] private MainGameUI _mainGameUI;
         [Header("Canvases")]
         [SerializeField] private GameObject _niceWorkCanvas;
@@ -63,6 +66,12 @@ namespace MainGame
             _killCount.text = $"KILL COUNT : {KillCount}";
             if (KillCount >= 5)
                 OnFinishKillGerms();
+        }
+
+        public void startRegainPanel()
+        {
+            scanucoPanel.SetActive(false);
+            RegainPanel.SetActive(true);
         }
     }
 
