@@ -17,6 +17,7 @@ namespace NrealLightWithOpenCVForUnityExample
     {
 
         public MainGameManager maingameManager;
+        public TextMeshProUGUI testText;
 
         public bool smoothing = true;
         public float lerp = 0.15f;
@@ -97,8 +98,10 @@ namespace NrealLightWithOpenCVForUnityExample
                 
             }
             // type here
-            maingameManager.startRegainPanel();
+            
+            // maingameManager.startRegainPanel();
             // logMessage.text = "Is working!";
+            testText.text = "Is working!";
 
 
         }
