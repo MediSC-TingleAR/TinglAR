@@ -44,6 +44,8 @@ namespace MainGame
         private void Awake()
         {
             _followCanvas.transform.position = CenterCamera.transform.position + CenterCamera.transform.forward;
+            _splashAttack.transform.parent = NRSessionManager.Instance.CenterCameraAnchor.transform;
+            _splashAttack.transform.localPosition = new Vector3(0,0,0.5f);
         }
 
 
