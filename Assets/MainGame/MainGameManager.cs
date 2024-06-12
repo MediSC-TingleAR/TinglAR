@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NRKernal;
 using TMPro;
 using UnityEngine;
 
@@ -26,6 +27,27 @@ namespace MainGame
         [SerializeField] private TMP_Text _killCount;
 
         public int KillCount { get; private set; }
+
+        private Transform m_CenterCamera;
+        private Transform CenterCamera
+        {
+            get
+            {
+                if (m_CenterCamera == null)
+                {
+                    if (NRSessionManager.Instance.CenterCameraAnchor != null)
+                        m_CenterCamera = NRSessionManager.Instance.CenterCameraAnchor;
+                    else if (Camera.main != null)
+                        m_CenterCamera = Camera.main.transform;
+                }
+                return m_CenterCamera;
+            }
+        }
+
+        private void Awake()
+        {
+            _followCanvas.transform.position = CenterCamera.transform.position + CenterCamera.transform.forward;
+        }
 
 
         void Start()
