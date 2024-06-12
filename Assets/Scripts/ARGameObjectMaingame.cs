@@ -17,8 +17,6 @@ namespace NrealLightWithOpenCVForUnityExample
     {
 
         public MainGameManager maingameManager;
-        public SubGameManager subgameController;
-        [SerializeField] private TextMeshProUGUI logMessage;
 
         public bool smoothing = true;
         public float lerp = 0.15f;
@@ -33,10 +31,6 @@ namespace NrealLightWithOpenCVForUnityExample
         private List<Vector3> pendingPositionList = new List<Vector3>();
         private List<Quaternion> pendingRotationList = new List<Quaternion>();
 
-        void Start()
-        {
-            logMessage.text = "Started";
-        }
 
         /// <summary>
         /// When smoothing is enabled, the new pose will be filtered with current pose using lerp. Big sudden change of 6-DOF pose will be prohibited.
@@ -54,7 +48,6 @@ namespace NrealLightWithOpenCVForUnityExample
             {
                 transform.localRotation = targetRotation;
                 transform.localPosition = targetPosition;
-                logMessage.text = "56th";
             }
             
             else
@@ -62,7 +55,6 @@ namespace NrealLightWithOpenCVForUnityExample
                 if (i==0)
                 {
                     i = 1;
-                    logMessage.text = "64th";
 
                 }
                 float positionDiff = Vector3.Distance(targetPosition, previousPosition);
@@ -74,7 +66,6 @@ namespace NrealLightWithOpenCVForUnityExample
                     transform.localPosition = Vector3.Lerp(previousPosition, targetPosition, lerp);
                     pendingPositionList.Clear();
                     pendingRotationList.Clear();
-                    logMessage.text = "76th";
                 }
                 else
                 {
@@ -102,14 +93,12 @@ namespace NrealLightWithOpenCVForUnityExample
                             pendingRotationList.Clear();
                         }
                     }
-                    logMessage.text = "104th";
                 }
                 
             }
             // type here
-            // maingameManager.startRegainPanel();
+            maingameManager.startRegainPanel();
             // logMessage.text = "Is working!";
-            subgameController.StartSubGame(targetPosition.x, targetPosition.y);
 
 
         }

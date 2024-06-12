@@ -11,7 +11,7 @@ namespace MainGame
         public GameObject RegainPanel;
         public GameObject scanucoPanel;
 
-        [SerializeField] private MainGameUI _mainGameUI;
+        [SerializeField] private GameObject _followCanvas;
         [Header("Canvases")]
         [SerializeField] private GameObject _niceWorkCanvas;
         [SerializeField] private GameObject _finishGameCanvas;
